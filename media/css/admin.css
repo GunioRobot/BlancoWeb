@@ -1,0 +1,34 @@
+/*
+    DJANGO Admin styles
+*/
+
+
+#header {
+    background:  #243622;
+    color: #ffc;
+    overflow: hidden;
+}
+
+.module h2, .module caption, .inline-group h2 {
+background: #344A30;
+}
+
+a:link, a:visited {
+color:#344A30;
+text-decoration:none;
+}
+
+a:hover{
+color: #74A174;
+}
+
+.row1 {
+background:none repeat scroll 0 0 #AFD9AF;
+}
+
+.button.default, input.default[type="submit"], .submit-row input.default {
+background:none repeat scroll 0 0 #344A30;
+border:2px solid #AFD9AF;
+}
+
+

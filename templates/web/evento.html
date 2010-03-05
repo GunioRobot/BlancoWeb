@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="infoEvento">
+{%if tipo.imagen %}
+<img src="{{tipo.imagen.url}}" class="left"/>
+{% endif %}
+<p>
+	Evento:<br/ ><h3>{{info.nombre }}</h3>
+	
+
+	Fecha:<br/ ><h3>{{info.fecha|date}}</h3>
+
+	Hora:<br/ ><h3>{{info.hora_inicio|time}}  {% if info.hora_fin %} -   {{info.hora_fin|time}}{% endif %}</h3>
+
+<br />
+		<h3>{{info.info}}</h3>
+</p>
+</div>
+<p>
+	<div style="text-align:right" class="small">Creado: {{info.creado|date}}</div>
+</p>
+{% endblock %}

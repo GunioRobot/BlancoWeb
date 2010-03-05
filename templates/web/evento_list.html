@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>Pulsa en el nombre para informacion detallada:
+
+<table id="resultados">
+<thead><tr><td>Fecha</td><td>Nombre</td></tr></thead>
+{% for e in eventos_list %}
+<tr><td>{{ e.fecha|date }}</td><td><a href="{{ e.get_absolute_url }}">{{e.nombre}}</a></td></tr>
+{%endfor%}
+</table>
+{% if is_paginated %}
+<div class="pagination">
+    <span class="step-links">
+        {% if has_previous %}
+            <a href="?page={{ eventos.previous_page_number }}"><-</a>
+        {% endif %}
+
+        <span class="current">
+            {{ eventos.number }} de {{ paginator.num_pages }}
+        </span>
+
+        {% if eventos.has_next %}
+            <a href="?page={{ eventos.next_page_number }}">-></a>
+        {% endif %}
+    </span>
+</div>
+{% endif %}
+{% endblock %}
+

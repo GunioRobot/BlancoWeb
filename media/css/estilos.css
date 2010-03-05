@@ -1,0 +1,137 @@
+#cabecera h1 {
+padding: 10px;
+color:#FFF;
+text-decoration:none;
+
+}
+
+#menuarriba {
+margin-top: 80px;
+}
+
+#menuarriba ul {
+display:inline;
+list-style-type:none;
+}
+
+#menuarriba li,#menuarriba a {
+float:left;
+display:block;
+text-decoration:none;
+padding:5px 12px;
+color: #FFF;
+}
+
+#menuarriba a{
+border-right: 4px solid;
+}
+
+#menuarriba a:hover{
+border-right: 4px solid #A9E59D;
+color:#00FF00
+}
+
+#menuder ul {
+list-style:none;
+padding:0 0 0 5px;
+}
+
+#menuder span {
+text-align:right;
+border-bottom:1px solid #000;
+display:block;
+margin:3px 0;
+}
+
+#menuder h2 {
+border-bottom:1px dotted #A9E59D;
+font-weight:bold;
+text-transform:uppercase;
+text-align: right;
+padding:5px 0;
+margin: 0 0 5px;
+}
+
+#pie a {
+color:#FFF;
+text-decoration:none;
+}
+
+#pie a:hover {
+color:#00FF00
+}
+
+.boton{
+float: right;
+clear: both;
+}
+
+
+
+#bienvenida img {
+margin: 0;
+padding: 0;
+display: block;
+width: 100%;
+max-height: 200px;
+}
+
+h3.alt, h2.alt {
+color: #E5E5E5;
+padding-left: 5px;
+}
+
+.quiet {
+color: #BFBFBF;
+}
+#noticias *{
+color: #FFF;
+}
+#noticias h2{
+padding: 0;
+margin: 0;
+}
+
+#noticias .caja{
+border: 1px solid #243622;
+}
+#noticias .caja h3{
+margin: 5px;
+border-bottom: 1px dotted ;
+
+}
+
+#noticias .caja p{
+margin-left: 15px;
+}
+
+.infoEvento img{
+max-width: 350px;
+max-height: 263px;
+}
+
+.infoEvento h3{
+color: #E5E5E5;
+}
+
+.nuevos p{
+margin: 0px;
+}
+
+hr.nuevos{
+width: 50%;
+border: 1px solid;
+margin-left: 30px;
+}
+
+.bienvenida img {
+width: 100%;
+margin:0 0 5px 0;
+padding: 0px;
+}
+
+.bienvenida {
+font-weight: bold;
+margin: 10px 15px 10px 15px;
+}
+

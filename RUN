@@ -1,0 +1,1 @@
+PYTHONPATH=/home/jneight/django-blanco:. python manage.py runserver --settings=settings 127.0.0.1:62044 --adminmedia=/home/jneight/blanco/media/admin

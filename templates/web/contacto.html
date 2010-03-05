@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}contacto | {{ block.super }}{% endblock %}
+{% block content %}
+{% if enviado %}
+<p class="success">Mensaje enviado correctamente. Gracias!</p>
+{% else %}
+<p>Rellena el siguiente formulario para ponerte en contacto con nosotros:</p>
+<form action="" method="POST" id="contacto_form">
+<ul>
+	{{ form.as_ul }}
+	<li><input type="submit" value="Enviar" name="submit"class="boton" /></li>
+</ul>
+</form>
+{% endif %}
+{% endblock %}

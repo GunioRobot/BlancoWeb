@@ -1,0 +1,76 @@
+@font-face {
+    font-family: GraublauWeb;
+    src: url(GraublauWeb.otf) format(truetype);
+}
+@font-face {
+    font-family: GraublauWeb;
+    font-weight: bold;
+    src: url(GraublauWebBold.otf) format(truetype);
+}
+
+body,html {
+font-family: GraublauWeb,"Verdana", "Arial", "Helvetica", "sans-serif";  
+font-size:0.9em;
+font-style:normal;
+margin-top: 5px;
+background: url("/media/imagenes/fondo.jpg") no-repeat fixed bottom right #161B16;
+}
+
+
+#contenedor{
+border: 1px solid #E5E5E5;
+
+}
+#cabecera, #menuarriba {
+background-color:#000;
+}
+
+#cabecera{
+height:125px;
+}
+#pie{
+background-color:#243622;
+color:#FFF;
+}
+
+#cuerpo p {
+padding-left: 5px;
+}
+
+#cuerpo h4{
+text-align: right;
+}
+
+#cuerpo {
+background:#344A30;
+color:#FFF;
+}
+
+
+#cabecera img{
+margin: 0px;
+padding: 0px;
+float: left;
+display: inline;
+width:384px;
+}
+
+
+
+#pie {
+text-align:center;
+color:#FFF;
+padding-top: 10px;
+}
+
+.box {
+  background: #243622;
+}
+
+.left {
+margin-left: 40px;
+}
+
+.alt {
+font-family: Palatino,serif;
+}

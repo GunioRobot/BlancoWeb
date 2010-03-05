@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load tags %}
+{% block content %}
+	{% get_last web.Bienvenida -id as bienvenida %}
+	<div class="bienvenida">
+	{% if bienvenida.imagen %}
+	<img src="/media{{bienvenida.imagen.url}}" />
+	{% endif %}
+             	<p>
+            		{{ bienvenida.texto }}
+            	</p>
+    </div>
+     <hr class="nuevos" />
+		<div class="nuevos span-7 box left">
+	    <h4 class="prepend-5 alt quiet">Eventos</h4> 
+	    {% get_latest web.Evento 8 as eventos %}
+	    <p> 
+	    {% for e in eventos %}
+	    <b>{{e.fecha|date}}</b> <a href="{{ e.get_absolute_url }}" class="quiet">{{e.nombre}}</a><br />
+	    {% endfor %}
+	    </p>    
+	    </div>
+    
+    {% get_latest web.Noticia 5 as noticias %}
+    {% if noticias %}
+    <div class="nuevos span-8 box last">
+    <h4 class="prepend-5 alt quiet">Novedades</h4>
+     
+    {% for n in noticias %}
+    
+			<h3>{{ n.titular }}</h3>
+			<p>{{ n.cuerpo }}</p>
+			<div class="small" style="text-align:right">Publicado: {{ n.creado|date}}</div>
+			<hr />
+		{% endfor %} 
+    </div>
+    {% endif %}
+     
+    
+        
+    
+	
+{% endblock %}

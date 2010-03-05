@@ -1,0 +1,152 @@
+{% load tags %}
+{% load compressed %}
+{% spaceless %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xml:lang="es" xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    	<meta name="robots" content="index,follow" />
+    	<meta name="keywords" content="blanco, cerveceria, cerveza, pub, granada, españa, irish, tavern, bar, cafeteria, cafe, te, noche, fiesta, concierto, celta, cubata" />
+    	<meta name="description" content="Blanco Irish Tavern es un pub de Granada, situado en la calle Martínez de la Rosa, 4" />
+    	
+    	{% compressed_css 'compressed_blueprint' %} 
+		{% compressed_css 'compressed_blueprintP' %} 
+		<!--[if lt IE 8]><link rel="stylesheet" href="{{ MEDIA.URL }}css/blueprint/ie.css" type="text/css" media="screen, projection" /><![endif]-->
+    	    	
+    	{% compressed_css 'compressed_css' %} 
+
+		{% compressed_js 'group_js' %}
+		<!--[if lt IE 8]>
+<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta2)/IE8.js">IE7_PNG_SUFFIX=".png";</script>
+<![endif]-->
+		    <script type="text/javascript">
+            //target="_blank" no es valido con XHTML
+	      window.addEvent('domready',function()
+	      	    {
+	      	    	$$('a.external').each(function(el)
+	      	        {
+	      	            el.addEvent('click',function(ev)
+	      	            {
+	      	                new Event(ev).stop();
+	      	                window.open(el.href);
+	      	            })
+	      	        })
+	      	    })
+    </script>
+
+
+
+
+
+        <title>{% block title %}BLANCO IRISH TAVERN{% endblock %}</title>
+    </head><body>
+        <div id="contenedor" class="container ">
+            <div id="cabecera" class="span-24">
+                <a href="{% url web.index %}"><img src="/media/imagenes/cabecera.jpg" alt="Blanco Irish Tavern" /></a>
+                <div id="menuarriba" class="span-14 last">
+            {% block menuarriba %}
+            
+            <ul>
+            <li><a href="{% url web.index %}">inicio</a></li>
+            <li><a href="{% url web.donde %}">¿dónde estamos?</a></li>
+            <li><a href="{% url web.eventos %}">conciertos, fiestas...</a></li>
+            <li><a href="{% url web.contacto %}">contacto</a></li>
+            </ul>
+            
+            {% endblock %}
+            </div><!-- end menuarriba -->
+            </div><!-- end cabecera -->
+            <div style="clear:both"></div>
+            
+            
+            <div id="cuerpo" class="span-24 last">
+            <hr />
+            <div id="contenido" class="span-18">
+	            {% block content %}
+	            {% endblock %}
+	           
+            </div><!-- end contenido -->
+            
+            <div id="menuder" class="span-5 last">
+
+            {% block menuder %}
+            
+            	{% get_next web.Evento as eventos %}
+            	<h3 class="caps alt">Proximos eventos:</h3>
+            	<div class="box">
+            	{% if eventos %}
+            	{%for e in eventos %}
+            			<div class="quiet"><b>{{e.fecha|date}}: </b><a href="{{ e.get_absolute_url }}" class="quiet">{{e.nombre}}</a></div>
+        			{% endfor %}
+        		{% else %}
+        		 <div class="quiet">No hay eventos...</div>
+            	{% endif%}
+            		
+        		</div>
+        		{% get_latest web.Horario 7 as horario %}
+        		{% if horario %}
+            	<h3 class="caps alt">Horario apertura:</h3>
+            	<div class="box">
+            	{% get_latest web.Horario 7 as horario %}
+            		{%for h in horario %}
+            			<div class="quiet"><b>{{h.dias}}: </b>{{h.abierto|time}} - {{h.cerrado|time}}</div>
+        			{% endfor %}
+        		</div>
+        		{% endif %}
+        		<h3 class="caps alt">Visitanos en tuenti:</h3>
+        		<a href="http://www.tuenti.com/#m=Profile&amp;func=index&amp;user_id=67035351" class="external"><img src="/media/tuenti/tuenti.png" class="tuenti"  alt="Visitar perfil en Tuenti"/></a>
+        		{% get_all web.Patrocinador as patrocinador %}
+        		{% if patrocinador %}
+        		<h3 class="caps alt">Colaboran:</h3>
+           		{%for p in patrocinador %}
+            			<a href="{{p.enlace}}" class="external quiet">
+            			{% if p.imagen %}
+            			<img src="{{p.imagen}}" alt="{{p.nombre}} />
+            			{% else %}
+            			{{p.nombre}}
+            			{% endif %}
+            			</a>
+        			{% endfor %}
+        		{% endif %}
+            {% endblock %}
+            
+            </div><!-- end menuder -->
+            </div><!-- end cuerpo -->
+            
+            <div id="pie" class="span-24 last">
+            	{% block footer %}
+
+          		<p>
+          		<a href="{% url web.index %}">&copy; Blanco Irish Tavern</a></p>
+          		<p>
+				<a href="/sitemap.xml" class="small">sitemap</a>&nbsp;|&nbsp;<a href="/admin/" class="small external">admin</a>
+				</p>
+				<p>
+				<a href="http://jigsaw.w3.org/css-validator/check/referer" class="external"><img src="/media/imagenes/validator/icon_CSS.gif"  alt="W3C CSS Validator"/></a>
+				<a href="http://validator.w3.org/check/referer" class="external"><!---<img src="{{ MEDIA.URL }}imagenes/validator/icon_XHTML.gif" alt="W3C XHTML Validator"/></a>-->
+				</p>				          		
+            	</div><!-- end pie -->
+            </div><!-- end contenedor -->
+				
+           	{% endblock %}
+           	
+           			
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-13136917-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</body>
+
+    </html>
+    
+    
+{% endspaceless %}

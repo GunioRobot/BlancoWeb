@@ -1,0 +1,82 @@
+#cuerpo a {
+cursor: pointer;
+background:url("/media/css/link.gif") no-repeat scroll right center transparent;
+margin:0 3px;
+padding-right:16px;
+text-decoration: none;
+}
+
+#cuerpo a:hover {
+color:#00FF00;
+background:url("/media/css/link2.gif") no-repeat scroll right center transparent;
+margin:0 3px;
+padding-right:16px;
+text-decoration: none;
+}
+
+
+h1 a{
+text-decoration: none;
+color: #FFF;
+}
+
+form label {
+width:10em;
+float:left;
+text-align:right;
+margin-right:0.5em;
+}
+
+input {
+border:1px solid;
+margin: 5px;
+}
+
+form ul {
+list-style: none;
+}
+
+
+table {
+border:1px solid;
+margin:5px;
+}
+
+table thead {
+background:#243622;
+}
+
+table tfoot {
+background:#243622;
+}
+
+table tr {
+border:1px solid;
+}
+
+table td {
+border-bottom:1px solid;
+}
+
+table a{
+color: #FFF;
+}
+
+img.left{
+border:1px solid #BFBFBF;
+float:left;
+margin:8px;
+padding:3px;
+}
+
+.tuenti{
+float: left;
+
+}
+
+.pagination .step-links *{
+text-align: center;
+color: #FFF;
+background: none;
+}
+
