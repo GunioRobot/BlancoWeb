@@ -16,7 +16,7 @@ def index(request, context_instance=None):
     '''
     c = RequestContext(request);
     
-    return render_to_response('web/index.html',{}, context_instance=c);
+    return render_to_response('web/index.html', {}, context_instance=c);
 
 
 
@@ -38,7 +38,7 @@ def evento(request, id, context_instance=None):
     else:
 		evento = get_object_or_404(Evento, slug=id);
     
-    return render_to_response('web/evento.html',{'info': evento,'tipo': evento.tipo_evento,}, context_instance=c);
+    return render_to_response('web/evento.html', {'info': evento, 'tipo': evento.tipo_evento, }, context_instance=c);
 
 
 def galeria(request, context_instance=None):

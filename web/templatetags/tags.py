@@ -64,7 +64,7 @@ def get_all(parser, token):
     elif partes[2] != 'as':
         raise TemplateSyntaxError, "segundo argumento debe ser as";
     
-    return LatestNode(model=partes[1], num=-1, varname=partes[3]);
+    return LatestNode(model=partes[1], num= -1, varname=partes[3]);
 get_all = register.tag(get_all)
 
 def get_next(parser, token):

@@ -20,13 +20,13 @@ class TipoEvento(models.Model):
         return self.nombre;
 
 class Evento(models.Model):
-    nombre = models.CharField(max_length=128,blank=False);
-    tipo_evento = models.ForeignKey(TipoEvento,blank=False);
+    nombre = models.CharField(max_length=128, blank=False);
+    tipo_evento = models.ForeignKey(TipoEvento, blank=False);
     fecha = models.DateField(blank=False);
     hora_inicio = models.TimeField(blank=False);
     hora_fin = models.TimeField(blank=True, null=True);
     info = models.TextField(blank=False);
-    creado = models.DateTimeField(auto_now_add=True,blank=False);
+    creado = models.DateTimeField(auto_now_add=True, blank=False);
     autor = models.ForeignKey(User, editable=False);
     slug = models.SlugField(unique=True);
     
@@ -46,7 +46,7 @@ class Evento(models.Model):
         return ('web.evento', [self.slug ]);
     
 class Horario(models.Model):
-    dias = models.CharField(max_length=128,blank=False);
+    dias = models.CharField(max_length=128, blank=False);
     abierto = models.TimeField(blank=False);
     cerrado = models.TimeField(blank=False);
     
@@ -55,12 +55,12 @@ class Horario(models.Model):
         
 class Bienvenida(models.Model):
     texto = models.TextField(blank=False);
-    imagen = models.FileField(upload_to="bienvenidas/",blank=True, null=True);
+    imagen = models.FileField(upload_to="bienvenidas/", blank=True, null=True);
     
 class Noticia(models.Model):
     titular = models.CharField(max_length=128, blank=True);
     cuerpo = models.TextField(blank=False);
-    creado = models.DateTimeField(auto_now_add=True,blank=False); 
+    creado = models.DateTimeField(auto_now_add=True, blank=False); 
     autor = models.ForeignKey(User, editable=False);  
          
 class Patrocinador(models.Model):
