@@ -1,34 +1,32 @@
 #cabecera h1 {
-padding: 10px;
 color:#FFF;
 text-decoration:none;
-
+padding:10px;
 }
 
 #menuarriba {
-margin-top: 80px;
+float:right;
+font-weight:700;
+padding-bottom:5px;
+padding-top:15px;
+width:40em;
+margin:0;
 }
 
-#menuarriba ul {
-display:inline;
-list-style-type:none;
+#menuarriba span {
+font-weight:700;
+color:#FFF;
+padding:10px;
 }
 
-#menuarriba li,#menuarriba a {
-float:left;
-display:block;
+#menuarriba a {
 text-decoration:none;
-padding:5px 12px;
-color: #FFF;
+color:#FFF;
 }
 
-#menuarriba a{
-border-right: 4px solid;
-}
-
-#menuarriba a:hover{
-border-right: 4px solid #A9E59D;
-color:#00FF00
+#menuarriba a:hover {
+border-bottom:2px solid #A9E59D;
+color:#0F0;
 }
 
 #menuder ul {
@@ -44,12 +42,10 @@ margin:3px 0;
 }
 
 #menuder h2 {
-border-bottom:1px dotted #A9E59D;
-font-weight:bold;
-text-transform:uppercase;
-text-align: right;
-padding:5px 0;
-margin: 0 0 5px;
+
+text-align:right;
+color:#E5E5E5;
+padding-left:5px;
 }
 
 #pie a {
@@ -58,80 +54,93 @@ text-decoration:none;
 }
 
 #pie a:hover {
-color:#00FF00
+color:#0F0;
 }
 
-.boton{
-float: right;
-clear: both;
+.boton {
+float:right;
+clear:both;
 }
-
-
 
 #bienvenida img {
-margin: 0;
-padding: 0;
-display: block;
-width: 100%;
-max-height: 200px;
+display:block;
+width:100%;
+max-height:200px;
+margin:0;
+padding:0;
 }
 
-h3.alt, h2.alt {
-color: #E5E5E5;
-padding-left: 5px;
+h3,h2.alt {
+color:#E5E5E5;
+padding-left:5px;
 }
 
 .quiet {
-color: #BFBFBF;
-}
-#noticias *{
-color: #FFF;
-}
-#noticias h2{
-padding: 0;
-margin: 0;
+color:#BFBFBF;
 }
 
-#noticias .caja{
-border: 1px solid #243622;
-}
-#noticias .caja h3{
-margin: 5px;
-border-bottom: 1px dotted ;
-
+#noticias * {
+color:#FFF;
 }
 
-#noticias .caja p{
+#noticias h2 {
+margin:0;
+padding:0;
+}
+
+#noticias .caja {
+border:1px solid #243622;
+}
+
+#noticias .caja h3 {
+border-bottom:1px dotted;
+margin:5px;
+}
+
+#noticias .caja p {
+margin-left:15px;
+}
+
+.infoEvento {
+font-size: 1em;
+}
+
+.infoEvento img {
+max-width:350px;
+max-height:263px;
+}
+
+.infoEvento h2 {
+color:#E5E5E5;
+font-size: 1.1em;
+}
+
+.nuevos p {
 margin-left: 15px;
 }
 
-.infoEvento img{
-max-width: 350px;
-max-height: 263px;
+.nuevos h3 {
+padding:0;
+margin: 0;
 }
 
-.infoEvento h3{
-color: #E5E5E5;
-}
-
-.nuevos p{
-margin: 0px;
-}
-
-hr.nuevos{
-width: 50%;
-border: 1px solid;
-margin-left: 30px;
+hr.nuevos {
+width:50%;
+border:1px solid;
+margin-left:30px;
 }
 
 .bienvenida img {
-width: 100%;
-margin:0 0 5px 0;
-padding: 0px;
+width:100%;
+margin:0 0 5px;
+padding:0;
 }
 
 .bienvenida {
-font-weight: bold;
-margin: 10px 15px 10px 15px;
+font-weight:700;
+margin:10px 15px;
 }
 
+.caps {
+font-size: 1.1em;
+}

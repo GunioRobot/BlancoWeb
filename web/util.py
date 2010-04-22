@@ -1,4 +1,10 @@
+# -*- coding: utf-8 -*-
+
 from django.template.defaultfilters import slugify;
+from django.shortcuts import get_object_or_404;
+from django.http import Http404;
+
+from BlancoWeb.web.models import Redirect, Evento;
 
 def slugifyUnico(value, model, slugfield='slug'):
         """Returns a slug on a name which is unique within a model's table
@@ -31,3 +37,36 @@ def slugifyUnico(value, model, slugfield='slug'):
                         return potential
                 # we hit a conflicting slug, so bump the suffix & try again
                 suffix += 1
+
+
+class Http302(Exception):
+    def __init__(self, redirect_to):
+        self.redirect_to = redirect_to;
+
+class Http301(Exception):
+    def __init__(self, redirect_to):
+        self.redirect_to = redirect_to;
+
+def get_object_or_error(klass, *args, **kwargs):
+    """
+        Busca un objeto perteneciente al modelo klass
+        en caso de no existir:
+            si esta en la lista de Redirect, lanza excepcion 301 o 302
+            si no esta, lanza excepcion 404
+    """
+    
+    try:
+        return get_object_or_404(klass, *args, **kwargs);
+    except Http404:
+        try:
+            r = Redirect.objects.get(kwargs.popitem());
+            if r.permanente:
+                raise Http301(r.evento.get_absolute_url());
+            else:
+                raise Http302(r.evento.get_absolute_url());            
+        except Redirect.DoesNotExist:
+            raise Http404;
+        
+        
+            
+        

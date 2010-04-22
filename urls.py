@@ -1,8 +1,10 @@
 from django.conf.urls.defaults import *;
-from blanco.web.models import Evento;
 from django.contrib.sitemaps import FlatPageSitemap, GenericSitemap;
-from blanco.sitemap import *;
+
 from django.views.generic import list_detail;
+
+from web.models import Evento;
+from sitemap import *;
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin;
@@ -26,7 +28,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
     (r'^admin/', include(admin.site.urls)),
-    (r'^web/', include('blanco.web.urls')),
+    (r'^web/', include('web.urls')),
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media/'}),
     (r'^$', 'django.views.generic.simple.redirect_to', {'url':'/web/'}),
 )

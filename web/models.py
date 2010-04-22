@@ -2,14 +2,13 @@ from django.db import models;
 from django.contrib.auth.models import User;
 from django.contrib.sitemaps import ping_google;
 
-
-from web.util import slugifyUnico;
+from django.conf import settings;
 
 # Create your models here.
 
 class TipoEvento(models.Model):
     nombre = models.CharField(max_length=32);
-    imagen = models.FileField(upload_to="eventos/", blank=True, null=True);
+    imagen = models.FileField(upload_to="imagenes/eventos/", blank=True, null=True);
     
     def save(self, *args, **kwargs):
         
@@ -31,8 +30,18 @@ class Evento(models.Model):
     slug = models.SlugField(unique=True);
     
     def save(self, *args, **kwargs):
-        if not self.id:
+        if self.id:# ya existe
+            backup = Evento.objects.get(pk=self.id);
+            if self.nombre != backup.nombre:# se cambio el titulo -> nuevo slug
+                self.slug = slugifyUnico(self.nombre, model=self.__class__);
+                try:
+                    redirect = RedirectEvento(evento=self, slug=backup.slug, permanente=True);
+                    redirect.save();
+                except ValueError:
+                    pass;
+        else:
             self.slug = slugifyUnico(self.nombre, model=self.__class__);
+            
         super(Evento, self).save();  
         try:
              ping_google();
@@ -55,16 +64,34 @@ class Horario(models.Model):
         
 class Bienvenida(models.Model):
     texto = models.TextField(blank=False);
-    imagen = models.FileField(upload_to="bienvenidas/", blank=True, null=True);
+    imagen = models.FileField(upload_to=settings.IMAGENES_DIR+"/bienvenidas/", blank=True, null=True);
     
 class Noticia(models.Model):
     titular = models.CharField(max_length=128, blank=True);
     cuerpo = models.TextField(blank=False);
     creado = models.DateTimeField(auto_now_add=True, blank=False); 
-    autor = models.ForeignKey(User, editable=False);  
+    autor = models.ForeignKey(User, editable=False);
+    
+    @models.permalink
+    def get_absolute_url(self):
+        return ('web.index',[]);  
          
 class Patrocinador(models.Model):
-    imagen = models.FileField(upload_to="patrocinadores/", blank=True, null=True);
+    imagen = models.FileField(upload_to=settings.IMAGENES_DIR+"/patrocinadores/", blank=True, null=True);
     nombre = models.CharField(max_length=128, blank=False);
     enlace = models.URLField(verify_exists=True, blank=False);
+    
+class Redirect(models.Model):
+    evento = models.ForeignKey(Evento, blank=False);
+    slug = models.SlugField(unique=True, blank=False);
+    permanente = models.BooleanField(blank=False);
+    
+    def save(self, *args, **kwargs):
+        # slug sera unico
+        if not Redirect.objects.filter(**{'slug': self.slug}).count():
+            super(Redirect, self).save();
+        else:
+            raise ValueError("No puede haber dos Redirect con mismo slug.");
+            
+    
     

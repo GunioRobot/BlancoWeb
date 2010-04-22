@@ -1,5 +1,5 @@
 from django.contrib.sitemaps import Sitemap;
-from blanco.web.models import Evento, Noticia;
+from web.models import Evento, Noticia;
 
 class EventoSitemap(Sitemap):
     changefrep = "never";

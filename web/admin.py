@@ -1,6 +1,6 @@
-from blanco.web.models import *;
 from django.contrib import admin;
 
+from web.models import *;
 '''
     Tipos de evento
 '''
@@ -18,7 +18,7 @@ class HorarioAdmin(admin.ModelAdmin):
     list_display = ('dias', 'abierto', 'cerrado',);
     
 class NoticiaAdmin(admin.ModelAdmin):
-    list_display = ('titular', 'cuerpo', 'creado'); 
+    list_display = ('pk', 'titular', 'cuerpo', 'creado'); 
     
     def save_model(self, request, obj, form, change):
         obj.autor = request.user;
@@ -29,10 +29,11 @@ class PatrocinadorAdmin(admin.ModelAdmin):
     
 class BienvenidaAdmin(admin.ModelAdmin):
     list_display = ('texto', 'imagen');
-
+    
 admin.site.register(Evento, EventoAdmin);
 admin.site.register(TipoEvento);
 admin.site.register(Horario, HorarioAdmin);
 admin.site.register(Bienvenida, BienvenidaAdmin);
 admin.site.register(Noticia, NoticiaAdmin);
 admin.site.register(Patrocinador, PatrocinadorAdmin);
+admin.site.register(Redirect);
