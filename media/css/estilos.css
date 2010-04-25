@@ -34,12 +34,7 @@ list-style:none;
 padding:0 0 0 5px;
 }
 
-#menuder span {
-text-align:right;
-border-bottom:1px solid #000;
-display:block;
-margin:3px 0;
-}
+
 
 #menuder h2 {
 
@@ -144,3 +139,9 @@ margin:10px 15px;
 .caps {
 font-size: 1.1em;
 }
+
+* span .value-title {
+display: none;
+}
+
+

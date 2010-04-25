@@ -94,7 +94,13 @@
             	<div class="box">
             	{% if eventos %}
             	{%for e in eventos %}
-            			<div class="quiet"><b>{{e.fecha|date}}: </b><a href="{{ e.get_absolute_url }}" class="quiet">{{e.nombre}}</a></div>
+            	<div class="vevent">
+            			<span class="dtstart">
+            			<b>{{e.fecha|date}}: </b>
+            			<span class="value-title" title="{{e.fecha}}"></span>
+            			</span>
+            			<a href="{{ e.get_absolute_url }}" class="quiet url summary">{{e.nombre}}</a>
+            	</div>
         			{% endfor %}
         		{% else %}
         		 <div class="quiet">No hay eventos...</div>
@@ -133,6 +139,7 @@
             
             <div id="pie" class="span-24 last">
             	{% block footer %}
+
 
           		<p>
           		<a href="{% url web.index %}">&copy; Blanco Irish Tavern</a></p>

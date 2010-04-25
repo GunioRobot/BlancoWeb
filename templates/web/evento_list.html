@@ -6,7 +6,17 @@
 <table id="resultados">
 <thead><tr><td>Fecha</td><td>Nombre</td></tr></thead>
 {% for e in eventos_list %}
-<tr><td>{{ e.fecha|date }}</td><td><a href="{{ e.get_absolute_url }}">{{e.nombre}}</a></td></tr>
+<div class="vevent">
+<tr>
+
+<td>
+	
+	<span class="dtstart">
+	<b>{{e.fecha|date}}: </b>
+	<span class="value-title" title="{{e.fecha}}"></span>
+	</span></td>
+	<td><a href="{{ e.get_absolute_url }}" class="quiet url summary">{{e.nombre}}</a></td></tr>
+	</div>
 {%endfor%}
 </table>
 {% if is_paginated %}
