@@ -63,7 +63,7 @@ class CSSOptimizer(object):
                             self.parser.log('In "' + selector + '" Optimised ' + item + ': Changed ' + old + ' to ' + value, 'Information')
 
                     if item == 'font-weight' and self.parser.getSetting('compress_font-weight'):
-                        if value  == 'bold':
+                        if value == 'bold':
                             value = '700'
                             self.parser.log('In "' + selector + '" Optimised font-weight: Changed "bold" to "700"', 'Information')
 
@@ -131,7 +131,7 @@ class CSSOptimizer(object):
                         new_bg_value += temp[i] + ' '
 
             new_bg_value = new_bg_value.strip()
-            if i != (number_of_values-1):
+            if i != (number_of_values - 1):
                 new_bg_value += ','
 
         #Delete all background-properties
@@ -287,7 +287,7 @@ class CSSOptimizer(object):
 
         for l in xrange(len(value)):
             #continue if no numeric value
-            if not (len(value[l]) > 0 and (value[l][0].isdigit() or value[l][0] in ('+', '-') )):
+            if not (len(value[l]) > 0 and (value[l][0].isdigit() or value[l][0] in ('+', '-'))):
                 continue
 
             #Fix bad colors
@@ -348,13 +348,13 @@ class CSSOptimizer(object):
 
         #rgb(0,0,0) . #000000 (or #000 in this case later)
         if color[:4].lower() == 'rgb(':
-            color_tmp = color[4:(len(color)-5)]
+            color_tmp = color[4:(len(color) - 5)]
             color_tmp = color_tmp.split(',')
 
             for c in color_tmp:
                 c = c.strip()
                 if c[:-1] == '%':
-                    c = round((255*color_tmp[i])/100)
+                    c = round((255 * color_tmp[i]) / 100)
 
                 if color_tmp[i] > 255:
                     color_tmp[i] = 255

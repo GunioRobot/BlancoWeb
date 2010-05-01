@@ -18,7 +18,7 @@ class Command(NoArgsCommand):
         from compress.utils import needs_update, filter_css, filter_js
 
         for name, css in settings.COMPRESS_CSS.items():
-            u, version = needs_update(css['output_filename'], 
+            u, version = needs_update(css['output_filename'],
                 css['source_filenames'])
 
             if (force or u) or verbosity >= 2:
@@ -34,7 +34,7 @@ class Command(NoArgsCommand):
                 print
 
         for name, js in settings.COMPRESS_JS.items():
-            u, version = needs_update(js['output_filename'], 
+            u, version = needs_update(js['output_filename'],
                 js['source_filenames'])
 
             if (force or u) or verbosity >= 2:
@@ -50,7 +50,7 @@ class Command(NoArgsCommand):
                 print
 
 # Backwards compatibility for Django r9110
-if not [opt for opt in Command.option_list if opt.dest=='verbosity']:
+if not [opt for opt in Command.option_list if opt.dest == 'verbosity']:
     Command.option_list += (
     make_option('--verbosity', '-v', action="store", dest="verbosity",
         default='1', type='choice', choices=['0', '1', '2'],

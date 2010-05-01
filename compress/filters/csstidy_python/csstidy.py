@@ -145,7 +145,7 @@ class CSSTidy(object):
         self._settings[setting] = value
         return True
 
-    def log(self, message, ttype, line = -1):
+    def log(self, message, ttype, line= -1):
         if line == -1:
             line = self._line
 
@@ -162,7 +162,7 @@ class CSSTidy(object):
 
     #Checks if a character is escaped (and returns True if it is)
     def escaped(self, string, pos):
-        return not (string[pos-1] != '\\' or self.escaped(string, pos-1))
+        return not (string[pos - 1] != '\\' or self.escaped(string, pos - 1))
 
     #Adds CSS to an existing media/selector
     def merge_css_blocks(self, media, selector, css_add):
@@ -219,7 +219,7 @@ class CSSTidy(object):
         ret = 0
 
         if self.__is_token(self._css, idx):
-            if self._css[idx] == '/' and self._css[idx+1] == '*' and self._selector.strip() == '':
+            if self._css[idx] == '/' and self._css[idx + 1] == '*' and self._selector.strip() == '':
                 self._status = 'ic'
                 self._from = 'is'
                 return 1
@@ -229,7 +229,7 @@ class CSSTidy(object):
                 self._invalid_at = True
 
                 for name, ttype in data.at_rules.iteritems():
-                    if self._css[idx+1:len(name)].lower() == name.lower():
+                    if self._css[idx + 1:len(name)].lower() == name.lower():
                         if ttype == 'at':
                             self._at = '@' + name
                         else:
@@ -242,7 +242,7 @@ class CSSTidy(object):
                 if self._invalid_at:
                     self._selector = '@'
                     invalid_at_name = ''
-                    for j in xrange(idx+1, len(self._css)):
+                    for j in xrange(idx + 1, len(self._css)):
                         if not self._css[j].isalpha():
                             break;
 
@@ -279,11 +279,11 @@ class CSSTidy(object):
                 self._selector += self.__unicode(idx)
 
             #remove unnecessary universal selector,  FS#147
-            elif not (self._css[idx] == '*' and self._css[idx+1] in ('.', '#', '[', ':')):
+            elif not (self._css[idx] == '*' and self._css[idx + 1] in ('.', '#', '[', ':')):
                 self._selector += self._css[idx]
 
         else:
-            lastpos = len(self._selector)-1
+            lastpos = len(self._selector) - 1
 
             if lastpos == -1 or not ((self._selector[lastpos].isspace() or self.__is_token(self._selector, lastpos) and self._selector[lastpos] == ',') and self._css[idx].isspace()):
                 self._selector += self._css[idx]
@@ -301,7 +301,7 @@ class CSSTidy(object):
                 if not self.getSetting('discard_invalid_properties') or self.__property_is_valid(self._property):
                     self.__add_token(data.PROPERTY, self._property)
 
-            elif self._css[idx] == '/' and self._css[idx+1] == '*' and self._property == '':
+            elif self._css[idx] == '/' and self._css[idx + 1] == '*' and self._property == '':
                 self._status = 'ic'
                 self._from = 'ip'
                 return 1
@@ -329,9 +329,9 @@ class CSSTidy(object):
         """
             Parse in value
         """
-        pn = (( self._css[idx] == "\n" or self._css[idx] == "\r") and self.__property_is_next(idx+1) or idx == len(self._css)) #CHECK#
+        pn = ((self._css[idx] == "\n" or self._css[idx] == "\r") and self.__property_is_next(idx + 1) or idx == len(self._css)) #CHECK#
         if self.__is_token(self._css, idx) or pn:
-            if self._css[idx] == '/' and self._css[idx+1] == '*':
+            if self._css[idx] == '/' and self._css[idx + 1] == '*':
                 self._status = 'ic'
                 self._from = 'iv'
                 return 1
@@ -436,7 +436,7 @@ class CSSTidy(object):
             self._str_in_str = not self._str_in_str
 
         temp_add = self._css[idx] # ...and no not-escaped backslash at the previous position
-        if (self._css[idx] == "\n" or self._css[idx] == "\r") and not (self._css[idx-1] == '\\' and not self.escaped(self._css, idx-1)):
+        if (self._css[idx] == "\n" or self._css[idx] == "\r") and not (self._css[idx - 1] == '\\' and not self.escaped(self._css, idx - 1)):
             temp_add = "\\A "
             self.log('Fixed incorrect newline in string', 'Warning')
 
@@ -465,7 +465,7 @@ class CSSTidy(object):
         """
             Parse css In Comment
         """
-        if self._css[idx] == '*' and self._css[idx+1] == '/':
+        if self._css[idx] == '*' and self._css[idx + 1] == '/':
             self._status = self._from
             self.__add_token(data.COMMENT, self._curComment)
             self._curComment = ''
@@ -481,7 +481,7 @@ class CSSTidy(object):
             Parse in at-block
         """
         if self.__is_token(string, idx):
-            if self._css[idx] == '/' and self._css[idx+1] == '*':
+            if self._css[idx] == '/' and self._css[idx + 1] == '*':
                 self._status = 'ic'
                 self._from = 'at'
                 return 1
@@ -496,7 +496,7 @@ class CSSTidy(object):
             elif self._css[i] == '\\':
                 self._at += self.__unicode(i)
         else:
-            lastpos = len(self._at)-1
+            lastpos = len(self._at) - 1
             if not (self._at[lastpos].isspace() or self.__is_token(self._at, lastpos) and self._at[lastpos] == ',') and self._css[i].isspace():
                 self._at += self._css[i]
 
@@ -514,7 +514,7 @@ class CSSTidy(object):
                 if num == (len(self._sel_separate)): #CHECK#
                     pos += 1
 
-                new_sels.append(self._selector[lastpos:(pos-lastpos-1)])
+                new_sels.append(self._selector[lastpos:(pos - lastpos - 1)])
                 lastpos = pos
 
             if len(new_sels) > 1:

@@ -8,7 +8,7 @@ class EventoSitemap(Sitemap):
     def items(self):
         return Evento.objects.all();
     
-    def lastmod(self,obj):
+    def lastmod(self, obj):
         return obj.creado;
     
 class NoticiaSitemap(Sitemap):
@@ -18,6 +18,6 @@ class NoticiaSitemap(Sitemap):
     def items(self):
         return Noticia.objects.all();
     
-    def lastmod(self,obj):
+    def lastmod(self, obj):
         return obj.creado;
 

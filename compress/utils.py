@@ -36,7 +36,7 @@ def get_mod_func(callback):
         dot = callback.rindex('.')
     except ValueError:
         return callback, ''
-    return callback[:dot], callback[dot+1:]
+    return callback[:dot], callback[dot + 1:]
 
 def needs_update(output_file, source_files, verbosity=0):
     """

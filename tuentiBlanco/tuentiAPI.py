@@ -44,12 +44,12 @@ class TuentiAPI:
         response = simplejson.loads(response)[0];
         
         #encripta el password
-        passE = self.__md5(response['challenge']+self.__md5(password));
-        appkey = ('MDI3MDFmZjU4MGExNWM0YmEyYjA5MzRkODlm'+
+        passE = self.__md5(response['challenge'] + self.__md5(password));
+        appkey = ('MDI3MDFmZjU4MGExNWM0YmEyYjA5MzRkODlm' + 
                   'Mjg0MTU6MC4xMzk0ODYwMCAxMjYxMDYwNjk2');
               
         #identificarse
-        json = self.__getJSON(method='getSession',param={
+        json = self.__getJSON(method='getSession', param={
             "passcode":passE,
             "application_key":appkey,
             "timestamp":response['timestamp'],
@@ -69,7 +69,7 @@ class TuentiAPI:
 
         request = {}
         
-        if self.user_data.get("session_id",False):
+        if self.user_data.get("session_id", False):
             request['session_id'] = self.user_data['session_id'];
         request['version'] = '0.4'
         request['requests'] = [[method, param]];
@@ -86,7 +86,7 @@ class TuentiAPI:
         #conectar con el servidor
         
         conn = HTTPConnection(host=self.__url);
-        response = conn.request('POST','api/' , headers=headers, body=data);
+        response = conn.request('POST', 'api/' , headers=headers, body=data);
         response = conn.getresponse();
         
         if response.status == 200:
@@ -112,6 +112,6 @@ class TuentiAPI:
 try:
     tuenti = TuentiAPI(TUENTI_MAIL, TUENTI_PASS);
     print tuenti.user_data;
-    print tuenti.request("getInbox",{})
+    print tuenti.request("getInbox", {})
 except TuentiError, e:
     print e;

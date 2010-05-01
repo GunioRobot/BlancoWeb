@@ -16,7 +16,7 @@ class HashVersioningBase(VersioningBase):
         of = output_file
         try:
             phi = of.index(ph)
-            old_version = output_file_name[phi:phi+len(ph)-len(of)]
+            old_version = output_file_name[phi:phi + len(ph) - len(of)]
             return (version != old_version), version
         except ValueError:
             # no placeholder found, do not update, manual update if needed
@@ -29,7 +29,7 @@ class HashVersioningBase(VersioningBase):
         s.close()
         return version            
             
-    def get_hash(self, f, CHUNK=2**16):
+    def get_hash(self, f, CHUNK=2 ** 16):
         m = self.hash_method()
         while 1:
             chunk = f.read(CHUNK)

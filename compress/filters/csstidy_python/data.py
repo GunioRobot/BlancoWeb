@@ -20,20 +20,20 @@
 # @package csstidy
 # @author Florian Schmitz (floele at gmail dot com) 2005
 
-AT_START    = 1
-AT_END      = 2
-SEL_START   = 3
-SEL_END     = 4
-PROPERTY    = 5
-VALUE       = 6
-COMMENT     = 7
-DEFAULT_AT  = 41
+AT_START = 1
+AT_END = 2
+SEL_START = 3
+SEL_END = 4
+PROPERTY = 5
+VALUE = 6
+COMMENT = 7
+DEFAULT_AT = 41
 
 # All whitespace allowed in CSS
 #
 # @global array whitespace
 # @version 1.0
-whitespace = frozenset([' ',"\n","\t","\r","\x0B"])
+whitespace = frozenset([' ', "\n", "\t", "\r", "\x0B"])
 
 # All CSS tokens used by csstidy
 #
@@ -46,7 +46,7 @@ tokens = '/@}{;:=\'"(,\\!$%&)#+.<>?[]^`|~'
 # @see compress_numbers()
 # @global array units
 # @version 1.0
-units = frozenset(['in','cm','mm','pt','pc','px','rem','em','%','ex','gd','vw','vh','vm','deg','grad','rad','ms','s','khz','hz'])
+units = frozenset(['in', 'cm', 'mm', 'pt', 'pc', 'px', 'rem', 'em', '%', 'ex', 'gd', 'vw', 'vh', 'vm', 'deg', 'grad', 'rad', 'ms', 's', 'khz', 'hz'])
 
 # Available at-rules
 #
@@ -62,9 +62,9 @@ at_rules = {'page':'is', 'font-face':'is', 'charset':'iv', 'import':'iv', 'names
 # @version 1.2
 unit_values = frozenset(['background', 'background-position', 'border', 'border-top', 'border-right', 'border-bottom',
                                     'border-left', 'border-width', 'border-top-width', 'border-right-width', 'border-left-width',
-                                    'border-bottom-width', 'bottom', 'border-spacing', 'font-size','height', 'left', 'margin', 'margin-top',
+                                    'border-bottom-width', 'bottom', 'border-spacing', 'font-size', 'height', 'left', 'margin', 'margin-top',
                                     'margin-right', 'margin-bottom', 'margin-left', 'max-height', 'max-width', 'min-height', 'min-width',
-                                    'outline-width', 'padding', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left','position',
+                                    'outline-width', 'padding', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left', 'position',
                                     'right', 'top', 'text-indent', 'letter-spacing', 'word-spacing', 'width'
                                     ])
 
@@ -281,11 +281,11 @@ optimize_colors['#F00'] = 'red'
 # @see merge_4value_shorthands()
 # @version 1.0
 shorthands = {}
-shorthands['border-color'] = ['border-top-color','border-right-color','border-bottom-color','border-left-color']
-shorthands['border-style'] = ['border-top-style','border-right-style','border-bottom-style','border-left-style']
-shorthands['border-width'] = ['border-top-width','border-right-width','border-bottom-width','border-left-width']
-shorthands['margin'] = ['margin-top','margin-right','margin-bottom','margin-left']
-shorthands['padding'] = ['padding-top','padding-right','padding-bottom','padding-left']
+shorthands['border-color'] = ['border-top-color', 'border-right-color', 'border-bottom-color', 'border-left-color']
+shorthands['border-style'] = ['border-top-style', 'border-right-style', 'border-bottom-style', 'border-left-style']
+shorthands['border-width'] = ['border-top-width', 'border-right-width', 'border-bottom-width', 'border-left-width']
+shorthands['margin'] = ['margin-top', 'margin-right', 'margin-bottom', 'margin-left']
+shorthands['padding'] = ['padding-top', 'padding-right', 'padding-bottom', 'padding-left']
 shorthands['-moz-border-radius'] = 0
 
 # All CSS Properties. Needed for csstidy::property_is_next()

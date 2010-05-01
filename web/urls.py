@@ -3,6 +3,7 @@ from django.views.generic.simple import direct_to_template
 from django.views.generic import list_detail;
 
 from web.models import Evento;
+from web.feeds import EventoFeed;
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -22,6 +23,7 @@ urlpatterns = patterns('',
     #(r'^galeria/$', 'blanco.web.views.galeria', {}, 'web.galeria'),
     #(r'^admin/evento/nuevo/$', 'blanco.web.views.adminEventoNuevo', {}, 'web.admin.evento.nuevo'),
     #(r'^admin/evento/edit/(?P<id>[^/]*)/$', 'blanco.web.views.adminEventoEdit', {}, 'web.admin.evento.edit'),
+    (r'^evento/feed/$', web.feeds.EventoFeed()),
     (r'^evento/(?P<id>[^/]*)/$', 'web.views.evento', {}, 'web.evento'),
     (r'^eventos/$', list_detail.object_list, evento_info, 'web.eventos'),
     (r'^$', 'web.views.index', {}, 'web.index'),

@@ -84,7 +84,7 @@ class CSSPrinter(object):
                 ret += selector + '{' + top_line_end
 
                 for item, value in cssdata.iteritems():
-                    ret += indent +  item + ':' + value + ';' + iner_line_end
+                    ret += indent + item + ':' + value + ';' + iner_line_end
 
                 ret += '}' + bottom_line_end
 

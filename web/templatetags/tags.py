@@ -24,7 +24,7 @@ class LatestNode(Node):
             if self.num != -1:
                 context[self.varname] = self.model.objects.all().order_by('-pk')[:self.num];
             else:
-                context[self.varname] = self.model.objects.all();
+                context[self.varname] = self.model.objects.all().order_by('-pk');
         except:
             pass;
         return '';

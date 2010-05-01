@@ -14,7 +14,7 @@ class EventoAdmin(admin.ModelAdmin):
         obj.save();
         
 class HorarioAdmin(admin.ModelAdmin):
-    list_display = ('dias', 'abierto','cerrado',);
+    list_display = ('dias', 'abierto', 'cerrado',);
     
 class NoticiaAdmin(admin.ModelAdmin):
     list_display = ('titular', 'cuerpo', 'creado'); 
