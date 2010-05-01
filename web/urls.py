@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
 from django.views.generic import list_detail;
@@ -17,13 +18,18 @@ evento_info = {
 
 }
 
+feeds = {
+    'eventos': EventoFeed
+}
+
+
 urlpatterns = patterns('',
     (r'^donde/$', 'web.views.raise404', {}, 'web.donde'),
     (r'^contacto/$', 'web.views.contacto', {}, 'web.contacto'),
     #(r'^galeria/$', 'blanco.web.views.galeria', {}, 'web.galeria'),
     #(r'^admin/evento/nuevo/$', 'blanco.web.views.adminEventoNuevo', {}, 'web.admin.evento.nuevo'),
     #(r'^admin/evento/edit/(?P<id>[^/]*)/$', 'blanco.web.views.adminEventoEdit', {}, 'web.admin.evento.edit'),
-    (r'^evento/feed/$', web.feeds.EventoFeed()),
+    (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed',{'feed_dict': feeds}),
     (r'^evento/(?P<id>[^/]*)/$', 'web.views.evento', {}, 'web.evento'),
     (r'^eventos/$', list_detail.object_list, evento_info, 'web.eventos'),
     (r'^$', 'web.views.index', {}, 'web.index'),
