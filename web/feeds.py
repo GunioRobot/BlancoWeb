@@ -4,7 +4,7 @@ from web.models import Evento;
 
 class EventoFeed(Feed):
     title = "Blanco Irish Tavern";
-    link = "/evento/";
+    link = "web/feeds/eventos/";
     description = "Suscríbete para conocer todas nuestras fiestas"
     
     def items(self):

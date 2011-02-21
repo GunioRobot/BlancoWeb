@@ -110,6 +110,10 @@ color:#E5E5E5;
 font-size: 1.1em;
 }
 
+.infoEvento p{
+display: inline;
+}
+
 .nuevos p {
 margin-left: 15px;
 }

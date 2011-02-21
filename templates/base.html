@@ -100,7 +100,7 @@
             			<b>{{e.fecha|date}}: </b>
             			<span class="value-title" title="{{e.fecha}}"></span>
             			</span>
-            			<a href="{{ e.get_absolute_url }}" class="quiet url summary">{{e.nombre}}</a>
+            			<a href="{{ e.get_absolute_url }}" class="quiet url summary icon">{{e.nombre}}</a>
             	</div>
         			{% endfor %}
         		{% else %}
@@ -108,6 +108,7 @@
             	{% endif%}
             		
         		</div>
+        		
         		{% get_latest web.Horario 7 as horario %}
         		{% if horario %}
             	<h2 class="caps">Horario apertura:</h2>
@@ -120,6 +121,10 @@
         		{% endif %}
         		<h2 class="caps">Visitanos en tuenti:</h2>
         		<a title="Visitanos en Tuenti" href="http://www.tuenti.com/#m=Profile&amp;func=index&amp;user_id=67035351" class="external"><img src="/media/imagenes/tuenti/tuenti-trans.png" class="tuenti"  alt="Visitar perfil en Tuenti"/></a>
+        		<br />
+        		<p>
+        		<a href="/web/feeds/eventos" class="rss icon"><img src="/media/css/rss.jpg" alt="Suscribete por RSS" class="rss"/>Suscribete!</a>
+        		</p>
         		{% get_all web.Patrocinador as patrocinador %}
         		{% if patrocinador %}
         		<h2 class="caps">Colaboran:</h2>

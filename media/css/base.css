@@ -1,18 +1,31 @@
-#cuerpo a {
-cursor:pointer;
-background:url("/media/css/link.gif") no-repeat scroll right center transparent;
-padding-right:16px;
-text-decoration:none;
-margin:0 3px;
+a {
+cursor: pointer;
+text-decoration: none;
 color:#BFBFBF;
+padding: 0 3px;
 }
 
-#cuerpo a:hover {
+a:hover{
+cursor: pointer;
+text-decoration: none;
 color:#0F0;
+padding: 0 3px;
+}
+
+a.icon {
+background:url("/media/css/link.gif") no-repeat scroll right center transparent;
+padding-right:16px;
+}
+
+a:hover.icon {
 background:url("/media/css/link2.gif") no-repeat scroll right center transparent;
 padding-right:16px;
-text-decoration:none;
-margin:0 3px;
+
+}
+
+img.rss{
+padding-left: 5px;
+float: left;
 }
 
 h1 a {

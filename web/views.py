@@ -38,7 +38,6 @@ def evento(request, id, context_instance=None):
     """
     
     c = RequestContext(request);
-    
     if id.isdigit():
         evento = get_object_or_404(Evento, pk=id);
     else:
